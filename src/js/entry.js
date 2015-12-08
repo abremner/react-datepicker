@@ -10,25 +10,37 @@ var Datepicker = React.createClass({
 
 	// set inital state
 	getInitialState: function() {
+		
+		var savedDate = [];
+
+		if (localStorage.getItem('react-daterange') != null) {
+			savedDate = JSON.parse(localStorage.getItem('react-daterange'));
+		}
+
 		return {
 			startDate: moment(),
-			endDate: moment().day(7),
-			dateCollection: []
+			endDate: moment().day(3),
+			dateCollection: savedDate
 		}
+
 	},
 
 	// handle start date
 	handleStartDate: function(date) {
+
 		this.setState({
 			startDate: date
 		})
+
 	},
 
 	// handle end date
 	handleEndDate: function(date) {
+
 		this.setState({
 			endDate: date
 		});
+	
 	},
 
 	addDate: function() {
@@ -36,6 +48,9 @@ var Datepicker = React.createClass({
 		// Add the start and end time to the dateCollection array
 		this.state.dateCollection.unshift({start: this.state.startDate.format('Do MMM YYYY'), end: this.state.endDate.format('Do MMM YYYY')});
 		
+		// Store dates
+		localStorage.setItem('react-daterange', JSON.stringify(this.state.dateCollection));
+
 		// Update the state
 		this.setState({
 			dateCollection: this.state.dateCollection
@@ -43,8 +58,18 @@ var Datepicker = React.createClass({
 
  	},
 
+ 	clearDates: function() {
+
+		localStorage.removeItem('react-daterange');
+
+ 		this.setState({
+			dateCollection: []
+		})
+ 	},
+
  	// Render the page
 	render: function() {
+
 		return(
 			<div>
 				<div className="jumbotron">
@@ -65,9 +90,14 @@ var Datepicker = React.createClass({
 						</div>
 						<br />
 						<button className="btn btn-primary" onClick={this.addDate}>Save Date</button>
+						
 		     		</div>
 		    	</div>
 		    	<div className="container text-center">
+		    		{(this.state.dateCollection.length
+		    			? <button className="btn btn-link" onClick={this.clearDates}>Clear Dates</button>
+		    			: <i>No dates added.</i>
+					)}
 					<DateList items={this.state.dateCollection} />
 				</div>
 			</div>
@@ -83,7 +113,7 @@ var DateList = React.createClass({
 		var createItem = function(item, index) {
 			return <li key={index}><strong>{item.start}</strong> <i>to</i> <strong>{item.end}</strong></li>;
 		};
-		return <ul>{(this.props.items.map(createItem) || [])}</ul>;
+		return <ul>{this.props.items ? this.props.items.map(createItem) : null}</ul>;
 	}
 
 });
