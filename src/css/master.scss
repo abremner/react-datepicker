@@ -1,6 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+
 html {
     body {
         font-size: 100%;
-        background: url(../img/repeater.jpg);
     }
+}
+
+.jumbotron {
+	background: url(../img/cal.jpg) center no-repeat;
+	background-size: cover;
+	padding: 0;
+
+	.container {
+
+		background: rgba(0,0,0,0.5);
+		color: #FFF;
+		padding: 50px 0;
+		margin: 0;
+		width: 100%;
+
+		h1 {
+			font-family: 'Pacifico', cursive;	
+		}
+
+		p {
+			margin: 40px 0;
+		}
+
+		.form-group {
+			margin: 10px 20px;
+
+			input {
+				color: #000;
+				text-align: center;
+			}
+		}
+
+	}
+
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+
+	li {
+		list-style: none;
+		font-size: 2em;
+
+		i {
+			font-size: 0.75em;
+			color: #999;
+			margin: 0 20px;
+		}
+
+	}
+}
+
+@media (min-width: 768px) {
+	.jumbotron {
+		.container {
+			.start-date {
+				float: left;
+			}
+			.end-date {
+				float: right;
+			}
+		}
+	}
 }
