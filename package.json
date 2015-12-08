@@ -1,0 +1,42 @@
+{
+  "name": "react-datepicker",
+  "version": "1.0.0",
+  "description": "test app",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack-server": "webpack-dev-server --hot --progress --colors",
+    "web-server": "http-server -p 8080 .",
+    "start": "npm run webpack-server & npm run web-server"
+  },
+  "keywords": [
+    "demo"
+  ],
+  "author": "Angus Bremner",
+  "devDependencies": {
+    "autoprefixer-loader": "^2.0.0",
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.16.0",
+    "file-loader": "^0.8.4",
+    "http-server": "^0.8.0",
+    "img-loader": "^1.2.0",
+    "node-sass": "^3.2.0",
+    "postcss-loader": "^0.5.1",
+    "react-hot-loader": "^1.2.8",
+    "sass-loader": "^2.0.1",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.12.3",
+    "svgo": "^0.5.6",
+    "svgo-loader": "^1.1.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  },
+  "dependencies": {
+    "moment": "^2.10.6",
+    "react": "^0.14.3",
+    "react-datepicker": "^0.15.2",
+    "react-daterange-picker": "^1.0.0"
+  }
+}
